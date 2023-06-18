@@ -1,0 +1,46 @@
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
+
+local SoundService = game:GetService("SoundService")
+
+if SoundService.RespectFilteringEnabled == false then
+
+	Notification.new("success", "Success", "Enjoy, Subscribe me for a new video")	Notification.new("message", "YouTube : MadaraSricpter", "YouTube - MadaraSricpter")
+
+else
+
+	Notification.new("warning", "Warning", "Unfortunately no one else can hear it in this game, try a different one.\nMaybe an older game will work.")
+
+end
+_G.HeadSize = 20
+
+_G.Disabled = true
+
+game:GetService('RunService').RenderStepped:connect(function()
+
+if _G.Disabled then
+
+for i,v in next, game:GetService('Players'):GetPlayers() do
+
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+
+pcall(function()
+
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+
+v.Character.HumanoidRootPart.Transparency = 0.7
+
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+
+v.Character.HumanoidRootPart.Material = "Neon"
+
+v.Character.HumanoidRootPart.CanCollide = false
+
+end)
+
+end
+
+end
+
+end
+
+end
